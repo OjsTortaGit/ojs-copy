@@ -4045,6 +4045,7 @@ class Admin extends CI_Controller {
 						$value->stockclass_name,
 						$value->delivery_stat,
 						$value->stock_name,
+						$value->nstock_status,
 						$value->nstock_unit,
 						$value->nstock_qqty,
 						$tcost,

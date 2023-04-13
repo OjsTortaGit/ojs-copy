@@ -520,7 +520,7 @@ class Production extends CI_Controller {
 						$result['data'][$key] = array(
 							$value->delivery_date,
 							$value->supplier_name,
-							$value->stock_name,
+							$value->stock_name.'('.$value->nstock_status.')',
 							$value->nstock_unit,
 							$value->nstock_qqty,
 							// $value->nstock_status,
@@ -594,7 +594,8 @@ class Production extends CI_Controller {
 						"nstock_unit"=>$value->stock_unit,
 						"nstock_status"=>"DAMAGE",
 						"delivery_date"=>$date,
-						"delivery_stat"=>"undeliver"
+						"delivery_stat"=>"undeliver",
+						"emp_id"=>$this->session->userdata('current_id')
 					);
 					$insert = $this->project_model->insert('stock_newlog',$data);
 					if ($insert != false) {
