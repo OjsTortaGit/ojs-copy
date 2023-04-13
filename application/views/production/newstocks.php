@@ -1,4 +1,3 @@
-
 <div class="col-lg-12" style="max-height:470px;min-height:470px;">
   <!-- <div class="col-lg-1" style="max-height:500px;min-height:520px;background-color:#ececec;">
     <div class="list-group text-center" style="margin: 0 auto !important;">
@@ -343,9 +342,9 @@
           async: false,
           dataType: 'json',
           success: function(data){
-              $('input[name=id]').val(data.id);
-              $('input[name=category]').val(data.category);
-              $('input[name=item]').val(data.item);
+              $('input[name=id]').val(data.stock_id);
+              $('input[name=category]').val(data.stockCat_name);
+              $('input[name=item]').val(data.stock_name);
           },
           error: function(){
               alert('Could not Edit data');
