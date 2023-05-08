@@ -185,7 +185,7 @@ class ClientPos extends CI_Controller {
 		);*/
 
 		$where = array('stock_id'=>$id);
-		$nwhere = array('stock_id'=>$id,"delivery_stat"=>"received");
+		$nwhere = array('stock_id'=>$id,"delivery_stat"=>"received","nstock_status"=>"GOOD");
 		$join = array(
 			array("stockcategory","stockitem","stockCat_id")
 		);
@@ -453,7 +453,7 @@ class ClientPos extends CI_Controller {
 		        );
 	        	// instock
 				if ($item->stock_type == "instock") {
-					$where = array('stock_id'=>$item->stock_id);
+					$where = array('stock_id'=>$item->stock_id,"delivery_stat"=>"received","nstock_status"=>"GOOD");
 					$tcurrent = 0;
 					$new = $this->project_model->select('stock_newlog',false,$where);
 					if ($new != false) {

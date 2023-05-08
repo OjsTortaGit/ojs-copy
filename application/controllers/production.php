@@ -418,7 +418,7 @@ class Production extends CI_Controller {
 	function getItem(){
 		$id = $this->input->get('id');
 		$where = array('stock_id'=>$id);
-		$nwhere = array('stock_id'=>$id,"delivery_stat"=>"received");
+		$nwhere = array('stock_id'=>$id,"delivery_stat"=>"received","nstock_status"=>"GOOD");
 		$join = array(
 			array("stockcategory","stockitem","stockCat_id")
 		);
@@ -486,7 +486,7 @@ class Production extends CI_Controller {
 			foreach ($data as $key => $value) {
 					$buttons = '
 						<a href="javascript:;" class="btn btn-success item-add" data="'.$value->stock_id.'" title="Add Good Item"> <i class="fa fa-plus"></i></a>
-						<!--<a href="javascript:;" class="btn btn-danger item-addD" data="'.$value->stock_id.'" title="Add Damage Item"> <i class="fa fa-trash"></i></a>--!>
+						<a href="javascript:;" class="btn btn-danger item-addD" data="'.$value->stock_id.'" title="Add Damage Item"> <i class="fa fa-trash"></i></a>
 					';
 					$result['data'][$key] = array(
 						$value->stockclass_name,
@@ -521,6 +521,7 @@ class Production extends CI_Controller {
 							$value->delivery_date,
 							$value->supplier_name,
 							$value->stock_name,
+							$value->nstock_status,
 							$value->nstock_unit,
 							$value->nstock_qqty,
 							// $value->nstock_status,
@@ -594,7 +595,8 @@ class Production extends CI_Controller {
 						"nstock_unit"=>$value->stock_unit,
 						"nstock_status"=>"DAMAGE",
 						"delivery_date"=>$date,
-						"delivery_stat"=>"undeliver"
+						"delivery_stat"=>"undeliver",
+						"emp_id"=>$this->session->userdata('current_id')
 					);
 					$insert = $this->project_model->insert('stock_newlog',$data);
 					if ($insert != false) {

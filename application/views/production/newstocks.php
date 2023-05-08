@@ -44,6 +44,7 @@
                     <th style="width:20%">Date</th>
                     <th style="width:20%">Supplier</th>
                     <th>Item</th>
+                    <th>Type</th>
                     <th style="width:15%">Unit</th>
                     <th style="width:15%">Qty</th>
                     <!-- <th style="width:10%">Stat</th> -->
@@ -342,9 +343,9 @@
           async: false,
           dataType: 'json',
           success: function(data){
-              $('input[name=id]').val(data.stock_id);
-              $('input[name=category]').val(data.stockCat_name);
-              $('input[name=item]').val(data.stock_name);
+              $('input[name=id]').val(data.id);
+              $('input[name=category]').val(data.category);
+              $('input[name=item]').val(data.item);
           },
           error: function(){
               alert('Could not Edit data');
