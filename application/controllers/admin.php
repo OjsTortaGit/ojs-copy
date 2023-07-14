@@ -1586,7 +1586,7 @@ class Admin extends CI_Controller {
 		$where = array("stock_type"=>"instock");
 		$items = $this->project_model->select_join('stockitem',$join,false,$where);
 		foreach ($items as $result) {
-			$where = array('stock_id'=>$result->stock_id,"delivery_stat"=>"received");
+			$where = array('stock_id'=>$result->stock_id,"delivery_stat"=>"received","nstock_status"=>"GOOD");
 			$tstock = 0;
 			$new = $this->project_model->select('stock_newlog',false,$where);
 			if ($new != false) {
@@ -1684,7 +1684,7 @@ class Admin extends CI_Controller {
 		);
 		$items = $this->project_model->select_join('stockitem',$join,false,$iwhere);
 		foreach ($items as $result) {
-			$where = array('stock_id'=>$result->stock_id,'delivery_date <='=>$date,"delivery_stat"=>"received");
+			$where = array('stock_id'=>$result->stock_id,'delivery_date <='=>$date,"delivery_stat"=>"received","nstock_status"=>"GOOD");
 			$tcurrent = 0;
 			$new = $this->project_model->select('stock_newlog',false,$where);
 			if ($new != false) {
