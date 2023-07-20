@@ -532,7 +532,7 @@ class Production extends CI_Controller {
 		echo json_encode($result);
 	}
 	function addNewStock(){
-		$this->form_validation->set_rules('qty','Quantity','required');
+		$this->form_validation->set_rules('qty','Quantity','required|numeric');
 		$this->form_validation->set_rules('id','Item','required');
 		$this->form_validation->set_rules('date','Date','required');
 
@@ -573,7 +573,7 @@ class Production extends CI_Controller {
 		echo json_encode($msg);
 	}
 	function addNewDamageStock(){
-		$this->form_validation->set_rules('qty','Quantity','required');
+		$this->form_validation->set_rules('qty','Quantity','required|numeric');
 		$this->form_validation->set_rules('id','Item','required');
 		$date = date("Y-m-d");
 
@@ -767,7 +767,7 @@ class Production extends CI_Controller {
 		echo json_encode($result);
 	}
 	function addOutStock(){
-		$this->form_validation->set_rules('qty','Quantity','required');
+		$this->form_validation->set_rules('qty','Quantity','required|numeric');
 		$this->form_validation->set_rules('id','Item','required');
 		$this->form_validation->set_rules('date','Date','required');
 
@@ -970,7 +970,7 @@ class Production extends CI_Controller {
 	}
 	function addBranchStock(){
 		$this->form_validation->set_rules('branch','Branch','required');
-		$this->form_validation->set_rules('qty','Quantity','required');
+		$this->form_validation->set_rules('qty','Quantity','required|numeric');
 		$this->form_validation->set_rules('id','Item','required');
 		$date = date("Y-m-d h:i A");
 
@@ -1068,7 +1068,7 @@ class Production extends CI_Controller {
 		$this->form_validation->set_rules('desc','Desciption','required');
 		$this->form_validation->set_rules('unit','Unit','required');
 		$this->form_validation->set_rules('cost','Cost','required');
-		$this->form_validation->set_rules('qty','Quantity','required');
+		$this->form_validation->set_rules('qty','Quantity','required|numeric');
 		$this->form_validation->set_rules('date','Date','required');
 		$this->form_validation->set_rules('note','Note','required');
 
@@ -1142,7 +1142,7 @@ class Production extends CI_Controller {
 		$this->form_validation->set_rules('desc','Desciption','required');
 		$this->form_validation->set_rules('unit','Unit','required');
 		$this->form_validation->set_rules('cost','Cost','required');
-		$this->form_validation->set_rules('qty','Quantity','required');
+		$this->form_validation->set_rules('qty','Quantity','required|numeric');
 		$this->form_validation->set_rules('date','Date','required');
 		//$this->form_validation->set_rules('note','Note','required');
 
@@ -1262,7 +1262,7 @@ class Production extends CI_Controller {
 		$this->form_validation->set_rules('type','Type','required');
 		$this->form_validation->set_rules('section','Section','required');
 		$this->form_validation->set_rules('item','Item','required');
-		$this->form_validation->set_rules('qty','Quantity','required|number');
+		$this->form_validation->set_rules('qty','Quantity','required|numeric');
 		$this->form_validation->set_rules('action','Action','required');
 		$this->form_validation->set_rules('unit','Unit','required');
 		$this->form_validation->set_rules('date','Date','required');
@@ -1308,7 +1308,6 @@ class Production extends CI_Controller {
 			return false;
 		}
 	}
-
 	function user(){
 		$where = array('emp_id'=>$this->session->userdata('current_id'));
 		$user = $this->project_model->single_select('employee',$where);
@@ -1320,7 +1319,6 @@ class Production extends CI_Controller {
 			return false;
 		}
 	}
-
 	function test(){
 		$qty = "2";
 		$id = "194";

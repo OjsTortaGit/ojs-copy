@@ -415,7 +415,7 @@ class ClientPos extends CI_Controller {
 	}
 
 	function addCartItem(){
-		$this->form_validation->set_rules('qty','Quantity','required');
+		$this->form_validation->set_rules('qty','Quantity','required|numeric');
 		$this->form_validation->set_rules('id','Item','required');
 
 		if ($this->form_validation->run() == FALSE) {
