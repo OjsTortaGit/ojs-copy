@@ -5917,6 +5917,42 @@ class Admin extends CI_Controller {
 		}
 		echo json_encode($msg);
 	}
+	// sold items
+	function getSupplier(){
+		$data = $this->project_model->select('suppliers');
+
+		echo json_encode($data);
+	}
+
+	function printProductReport(){
+
+		$data['title'] = "Administrator";
+		$data['sub_heading'] = "POS System";
+		$data['page'] = 'Product Report';
+
+		$month = $this->uri->segment(4);
+		$year = $this->uri->segment(3);
+		$param =  $year.'-'.$month;
+		$supplier = $this->uri->segment(5);
+		
+		$data['prodList'] = [];
+		$join = array(
+			array('stockitem','ordered_item','stock_id')
+		);
+		$like = array('ordered_item.order_date'=>$param);
+		$where = array('stockitem.stock_type'=>'instock');
+		$data['orderItems'] = $this->project_model->select_join('ordered_item',$join,$like,$where);
+
+		$orderby = array('stock_name','ASC');
+		$stockwhere = array("supplier_id"=>$supplier);
+		$data['stocksResponse'] = $this->project_model->select('stockitem',$like=false,$stockwhere,$orderby);
+		
+		$data['property']= $this->project_model->select('property_info');
+
+		$this->load->view('admin/header',$data);
+		$this->load->view('reports/printProdReports',$data);
+		$this->load->view('admin/footer',$data);
+	}
 //testing center
 	function testFunction(){
 		$date = '2021-11-9';

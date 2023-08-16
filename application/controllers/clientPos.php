@@ -22,6 +22,17 @@ class ClientPos extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function newPos(){
+		$where = array('emp_id'=>$this->session->userdata('current_id'));
+		$data['employee'] = $this->project_model->single_select('employee',$where);
+		echo $this->session->userdata('discount_type');
+		$data['title'] = "Cashier";
+
+		$this->load->view('newHeader',$data);
+		$this->load->view('content/cashierv2');
+		$this->load->view('footer');
+	}
+
 	function fetchItems(){
 		$result2 = array('data' => array());
 
@@ -1302,7 +1313,31 @@ class ClientPos extends CI_Controller {
 		}
 		echo json_encode($msg);
 	}
+// ******************* newPOS *****************
+function fetchCategoryList(){
+	$result = array('success' => false, 'data' => array(), 'error' => '');
+	$data = $this->project_model->select('stockCategory');
 
+	if ($data != false) {
+		foreach ($data as $key => $row) {
+			$categoryId = preg_replace('/[^A-Za-z0-9_]/', '', $row->stockCat_id);
+			$categoryName = preg_replace('/[^A-Za-z0-9_]/', '', $row->stockCat_name);
+
+			$result['data'][$key] = array(
+				'categoryId' => $row->stockCat_id,
+				'categoryName' => $row->stockCat_name
+			);
+		}
+		$result['success'] = true;
+	} else {
+		$result['error'] = 'No data found.';
+	}
+	echo json_encode($result);
+}
+
+function fetchSelectedItems(){
+	
+}
 /*========= test =======*/
 	function loaditemqty(){
 
