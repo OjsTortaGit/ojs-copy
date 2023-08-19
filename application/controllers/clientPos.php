@@ -1335,8 +1335,20 @@ function fetchCategoryList(){
 	echo json_encode($result);
 }
 
-function fetchSelectedItems(){
-	
+function fetchCategoryItems(){
+	// replace with input value from the frontend
+	$category = 7;
+	$newprodArr = [];
+
+	$whereArr = array('stockcategory.stockCat_id'=>$category);
+	$joinTable = array(
+		array("stockcategory","stockitem","stockCat_id")
+	);
+	$data = $this->project_model->select_join('stockitem',$joinTable,$like=false,$whereArr);
+	foreach ($data as $value) {
+		
+	}
+	echo json_encode($data);
 }
 /*========= test =======*/
 	function loaditemqty(){
