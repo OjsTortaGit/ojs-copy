@@ -98,7 +98,7 @@
                         <td class="text-right" style="font-size:11pt!important;"><?php echo "P".$this->cart->format_number($tamount);?></td>
                     </tr>
                     <tr style="font-weight:bold;">
-                        <td colspan="2">Gcash Fee</td>
+                        <td colspan="2">Processing Fee</td>
                         <td class="text-right"><?php echo "P".$this->cart->format_number($bill->gcashfee);?></td>
                     </tr>
                     <tr style="font-weight:bold;">

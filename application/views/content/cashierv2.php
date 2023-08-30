@@ -190,7 +190,7 @@
     </section>
 </main>
 <script>
-/*  let itemsUrl = <?php echo base_url('clientPos/');?>;
+ let itemsUrl = <?php echo base_url('clientPos/');?>;
  let categoryUrl = <?php echo base_url('clientPos/fetchCategoryList');?>;
  let cartUrl = <?php echo base_url('clientPos/');?>;
  let cartItemsUrl = <?php echo base_url('clientPos/');?>;
@@ -202,7 +202,7 @@
  let logoutUrl = <?php echo base_url('clientPos/');?>;
  let closingUrl = <?php echo base_url('clientPos/');?>;
  let payUrl = <?php echo base_url('clientPos/');?>; 
- */
+
 
 </script>
 
