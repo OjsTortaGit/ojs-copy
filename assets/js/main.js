@@ -1,8 +1,8 @@
-const asyncget = (url,callback,errcallback) => {
-    $.get(url)
-    .done(response => callback(response))
-    .fail(error => errcallback(error));
-}
+const asyncget = (url, callback, errcallback) => {
+	$.get(url)
+		.done((response) => callback(response))
+		.fail((error) => errcallback(error));
+};
 /* 
     // sample implementation
     asyncget(url, cb_massageTable);
@@ -26,47 +26,48 @@ const asyncget = (url,callback,errcallback) => {
     return tmp;
 } */
 
-const getData = (data,url) => {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url:url,
-            type: 'GET',
-            dataType: 'json',
-            async: false,
-            success: function(response) {
-                resolve(response);
-            },
-            error: function(xhr, status, error) {
-                console.log('error:', error);
-                console.log('status:', status)
-                console.log('xhr:', xhr)
-                reject(error);
-            },
-        });
-      });
-}
+const getData = (data, url) => {
+	return new Promise((resolve, reject) => {
+		$.ajax({
+			url: url,
+			type: "GET",
+			dataType: "json",
+			data: data,
+			async: false,
+			success: function (response) {
+				resolve(response);
+			},
+			error: function (xhr, status, error) {
+				console.log("error:", error);
+				console.log("status:", status);
+				console.log("xhr:", xhr);
+				reject(error);
+			},
+		});
+	});
+};
 
 const postData = (data, url) => {
-    return new Promise((resolve, reject) => {
-      $.ajax({
-        type:'ajax',
-        method: 'post',
-        url: url,
-        data: data,
-        async: false,
-        dataType: 'json',
-        success: function(response) {
-          resolve(response);
-        },
-        error: function(xhr, status, error) {
-          console.log('error:', error);
-          console.log('status:', status)
-          console.log('xhr:', xhr)
-          reject(error);
-        },
-      });
-    });
-}
+	return new Promise((resolve, reject) => {
+		$.ajax({
+			type: "ajax",
+			method: "post",
+			url: url,
+			data: data,
+			async: false,
+			dataType: "json",
+			success: function (response) {
+				resolve(response);
+			},
+			error: function (xhr, status, error) {
+				console.log("error:", error);
+				console.log("status:", status);
+				console.log("xhr:", xhr);
+				reject(error);
+			},
+		});
+	});
+};
 
 /*  
     // sample implementation
@@ -83,23 +84,23 @@ const postData = (data, url) => {
     });
 */
 
-const deleteData = (data,url) => {
-    return new Promise((resolve, reject) => {
-      $.ajax({
-        url: url,
-        method: "DELETE",
-        type: "DELETE",
-        contentType: "application/json",
-        data: JSON.stringify(data),
-        success: function (response) {
-          resolve(response.message);
-        },
-        error: function (xhr, status, error) {
-          reject(error);
-        },
-      });
-    });
-}
+const deleteData = (data, url) => {
+	return new Promise((resolve, reject) => {
+		$.ajax({
+			url: url,
+			method: "DELETE",
+			type: "DELETE",
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: function (response) {
+				resolve(response.message);
+			},
+			error: function (xhr, status, error) {
+				reject(error);
+			},
+		});
+	});
+};
 
 /* 
     // sample implementation
@@ -115,26 +116,26 @@ const deleteData = (data,url) => {
     }); 
 */
 
-const errorCallbackVendor = (error) =>{
-    // const modalData = {
-    //     message:error
-    // }
-    // const title = 'Alert Message!';
-    // globalmodal (title,modal);
-    // modalContainer.empty();
-    // mustacheTemplating(modalContainer,alertTemplate,modalData);
-    console.log(error)
-}
+const errorCallbackVendor = (error) => {
+	// const modalData = {
+	//     message:error
+	// }
+	// const title = 'Alert Message!';
+	// globalmodal (title,modal);
+	// modalContainer.empty();
+	// mustacheTemplating(modalContainer,alertTemplate,modalData);
+	console.log(error);
+};
 
-const renderTemplate = (container,template,data) =>{
-    const $container = container;
-    const $template = template.html();  
-    
-    $container.append(Mustache.render($template, data)); 
-}
+const renderTemplate = (container, template, data) => {
+	const $container = container;
+	const $template = template.html();
+
+	$container.append(Mustache.render($template, data));
+};
 
 // call the basic overlay modal
-const globalmodalVendor = (title,modalname) =>{
-    modalname.modal("show");
-    modalname.find('.modaltitle').text(title);
-}
+const globalmodalVendor = (title, modalname) => {
+	modalname.modal("show");
+	modalname.find(".modaltitle").text(title);
+};

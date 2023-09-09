@@ -1,6 +1,9 @@
 <style>
     #itemsCont,#chartCont{
-        height: 100vh;
+        height: 93vh;
+    }
+    #buttonCont{
+        height: 5vh;
     }
     #chartCont{
         background-color: lightgray;
@@ -40,7 +43,7 @@
                             </a>
 
                             <template id="categoryTemplate">
-                                <li><a class="dropdown-item p-2" href="#" data-id='{{id}}' onclick="categoryHandler(this)">{{name}}</a></li>
+                                <li><a class="dropdown-item p-2 categoryItem" href="#" data-id='{{id}}' onclick="selectCategoryHandler(this)">{{name}}</a></li>
                             </template>
                             <ul class="dropdown-menu" id="categoryContainer">
                             </ul>
@@ -139,7 +142,7 @@
                         <h3>Cart</h3>
                         <div class="btn-group dropstart p-2">                            
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                <i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item p-2" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart</a></li>
@@ -176,43 +179,84 @@
             </div>
             <!-- cart section -->
             <div class="row position-absolute bottom-0 w-100 justify-content-evenly">
+                <div class="row fs-6">
+                    <div class="col-10">Subtotal</div>
+                    <div class="col-2 text-end">P0.00</div>
+                </div>
+                <div class="row fs-6">
+                    <div class="col-10">TAX</div>
+                    <div class="col-2 text-end">P0.00</div>
+                </div>
+                <div class="row fs-4 fw-bold">
+                    <div class="col-10">Total</div>
+                    <div class="col-2 text-end">P0.00</div>
+                </div>
+                <!-- <div class="row ">
+                    <div class="col p-3 text-bg-success text-center border border-white" id="cash" role="button"><i class="fa fa-money" aria-hidden="true"></i> Cash</div>
+                    <div class="col p-3 text-bg-success text-center border border-white" id="paymaya" role="button"><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Maya</div>
+                    <div class="col p-3 text-bg-success text-center border border-white" id="closeCart" role="button"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Gcash</div>
+                </div>
                 <div class="row">
-                    <div class="col-lg-10">Total</div>
-                    <div class="col-lg-2 text-end">P0.00</div>
+                    <div class="col p-3 text-bg-warning text-center border border-white" id="saveCart" role="button"><i class="fa fa-percent" aria-hidden="true"></i> Discount</div>
+                    <div class="col p-3 text-bg-danger text-center border border-white" id="payCart" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Void</div>
+                    <div class="col p-3 text-bg-info text-center border border-white" id="closeCart" role="button"><i class="fa fa-exchange" aria-hidden="true"></i> Transfer Orders</div>
+                </div>
+                <div class="row">
+                    <div class="col p-3 text-bg-primary text-center border border-white" id="saveCart" role="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Open Cash Cart</div>
+                    <div class="col p-3 text-bg-primary text-center border border-white" id="payCart" role="button"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Open Credit Cart</div>
+                </div>
+                <div class="row">
+                    <div class="col p-3 text-bg-success text-center border border-white" id="closeCart" role="button"><i class="fa fa-plus" aria-hidden="true"></i> New Cash Cart</div>
+                    <div class="col p-3 text-bg-danger text-center border border-white" id="closeCart" role="button"><i class="fa fa-plus" aria-hidden="true"></i> New Credit Cart</div>
                 </div>
                 <div class="row ">
-                    <div class="col p-3 text-bg-primary text-center" id="saveCart" role="button">Save</div>
-                    <div class="col p-3 text-bg-success text-center" id="payCart" role="button">Pay</div>
-                    <div class="col p-3 text-bg-danger text-center" id="closeCart" role="button">Close</div>
-                </div>
+                    <div class="col p-3 text-bg-secondary text-center border border-white" id="payCart" role="button"><i class="fa fa-money" aria-hidden="true"></i> CashOut</div>
+                    <div class="col p-3 text-bg-danger text-center border border-white" id="closeCart" role="button"><i class="fa fa-lock" aria-hidden="true"></i> Lock</div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    <section class="row" id="buttonCont">
+        <!-- cart transaction -->
+        <div class="col-4">
+            <div class="row">
+                <div class="col p-3 text-bg-warning text-center border border-white" id="discount" role="button"><i class="fa fa-percent" aria-hidden="true"></i> Discount</div>
+                <div class="col p-3 text-bg-danger text-center border border-white" id="void" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Void</div>
+                <div class="col p-3 text-bg-info text-center border border-white" id="transfer" role="button"><i class="fa fa-exchange" aria-hidden="true"></i> Transfer</div>
+                <div class="col p-3 text-bg-secondary text-center border border-white" id="cashout" role="button"><i class="fa fa-money" aria-hidden="true"></i> CashOut</div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="row">
+                <div class="col p-3 text-bg-primary text-center border border-white" id="opencashcart" role="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cash Cart</div>
+                <div class="col p-3 text-bg-primary text-center border border-white" id="opencreditcart" role="button"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Credit Cart</div>
+                <div class="col p-3 text-bg-success text-center border border-white" id="newcashcart" role="button"><i class="fa fa-plus" aria-hidden="true"></i> New Cash</div>
+                <div class="col p-3 text-bg-danger text-center border border-white" id="newcreditcart" role="button"><i class="fa fa-plus" aria-hidden="true"></i> New Credit</div>
+            </div>
+        </div>
+        
+        <!-- payments -->
+        <div class="col-4">
+            <div class="row ">
+                <div class="col p-3 text-bg-success text-center border border-white" id="cash" role="button"><i class="fa fa-money" aria-hidden="true"></i> Pay Cash</div>
+                <div class="col p-3 text-bg-success text-center border border-white" id="paymaya" role="button"><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Maya</div>
+                <div class="col p-3 text-bg-success text-center border border-white" id="closeCart" role="button"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Pay Gcash</div>
             </div>
         </div>
     </section>
 </main>
-<script>
-/*  let itemsUrl = <?php echo base_url('clientPos/');?>;
- let categoryUrl = <?php echo base_url('clientPos/fetchCategoryList');?>;
- let cartUrl = <?php echo base_url('clientPos/');?>;
- let cartItemsUrl = <?php echo base_url('clientPos/');?>;
- let printReceiptUrl = <?php echo base_url('clientPos/');?>;
- let printBillUrl = <?php echo base_url('clientPos/');?>;
- let newCartUrl =  <?php echo base_url('clientPos/');?>;
- let addItemUrl = <?php echo base_url('clientPos/');?>;
- let deleteItemUrl = <?php echo base_url('clientPos/');?>;
- let logoutUrl = <?php echo base_url('clientPos/');?>;
- let closingUrl = <?php echo base_url('clientPos/');?>;
- let payUrl = <?php echo base_url('clientPos/');?>; 
- */
 
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 
-<script src="<?php echo base_url('assets/js/cashierv2/cashierv2.js');?>"></script>
+
 <script src="<?php echo base_url('assets/mustache.js')?>"></script>
-<script src="<?php echo base_url('assets/js/main.js')?>"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-<script src="<?php echo base_url('assets/mustache.js')?>"></script>
-<script src="<?php echo base_url('assets/js/newPos/dom_newPos.js')?>"></script>
 <script src="<?php echo base_url('assets/js/newPos/vendor_newPos.js')?>"></script>
 <script src="<?php echo base_url('assets/js/newPos/handler_newPos.js')?>"></script>
+<script src="<?php echo base_url('assets/js/newPos/dom_newPos.js')?>"></script>
 <script type="module" src="<?php echo base_url('assets/js/newPos/app_newPos.js')?>"></script>
+<script>
+    const baseurl = "<?php echo base_url();?>";
+    console.log(baseurl);
+</script>

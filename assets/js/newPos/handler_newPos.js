@@ -1,45 +1,50 @@
 /*
     handlerJS collect the functions that relates to the eventlistener
-*/ 
+*/
 
 // default handler loaded the functions for displaying initial data
 
 const defaultHandler = () => {
-  const categoryUrl = "/clientPos/fetchCategoryList";
-  const allitemUrl = "/clientPos/fetchCategoryList";
-  asyncgetVendor(categoryUrl,cb_categoryListVedor,errCallback)
-}
+	const categoryUrl = "/clientPos/fetchCategoryList";
+	const allitemUrl = "/clientPos/fetchCategoryList";
+	asyncgetVendor(categoryUrl, cb_categoryListVedor, errCallback);
+};
 
 // create new cart
-const createCartHandler = () =>{}
+const createCartHandler = () => {};
 // open cart modal
-const openCartListHandler = () =>{}
+const openCartListHandler = () => {};
 // open unpaid cart
-const openUnpaidCartHandler = () =>{}
+const openUnpaidCartHandler = () => {};
 // select cart
-const selectCartHandler = () =>{}
+const selectCartHandler = () => {};
 // close selected cart
-const closeCartHandler = () =>{}
+const closeCartHandler = () => {};
 // void cart or reset cart status to not_paid and reset ordered_status to not_paid
-const voidCartHandler = () =>{}
+const voidCartHandler = () => {};
 
 // add item to cart
-const addItem = () =>{}
+const addItem = () => {};
 // delete item to cart
-const deleteItem = () =>{}
+const deleteItem = () => {};
 
 // pay cart selected
-const payHandler = () =>{}
+const payHandler = () => {};
 // print receipt
-const printReceiptHandler = () =>{}
+const printReceiptHandler = () => {};
 // print bill
-const printBillHandler = () =>{}
+const printBillHandler = () => {};
 
 // select category
-const selectCategoryHandler = () =>{}
+const selectCategoryHandler = (element) => {
+	const id = element.getAttribute("data-id");
+	console.log(id);
+	const data = { id: id };
+	const url = baseurl + "clientPos/fetchCategoryItems";
+	asyncGetVendor(url, data, cb_displaySelectedItems, errCallback);
+};
 // search item
-const searchItemHandler = () =>{}
-
+const searchItemHandler = () => {};
 
 // const testHandler = () =>{
 //     let tmp = null;
@@ -74,4 +79,3 @@ const searchItemHandler = () =>{}
 //   const {success,data,error} = response;
 //   console.log(data,response);
 // }
-

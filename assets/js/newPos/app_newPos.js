@@ -1,10 +1,10 @@
-import {inputs,containerEl,templateEl} from './input_newPos';
+import { inputs, containerEl, templateEl } from "./input_newPos";
 
-const {category,search} = inputs;
+const { category, search } = inputs;
 
-const {categoryList} = containerEl;
+const { categoryList } = containerEl;
 
-const {categoryTemplate} = templateEl;
+const { categoryTemplate } = templateEl;
 
 console.log(categoryList, categoryTemplate);
 

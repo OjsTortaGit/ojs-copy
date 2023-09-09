@@ -29,7 +29,7 @@ class ClientPos extends CI_Controller {
 		$data['title'] = "Cashier";
 
 		$this->load->view('newHeader',$data);
-		$this->load->view('content/cashierv2');
+		$this->load->view('newCashier/cashierv2');
 		$this->load->view('footer');
 	}
 
@@ -1337,18 +1337,26 @@ function fetchCategoryList(){
 
 function fetchCategoryItems(){
 	// replace with input value from the frontend
-	$category = 7;
+	$category = $this->input->get('id');
 	$newprodArr = [];
-
+	$result = array('success' => false, 'data' => [], 'error' => '');
 	$whereArr = array('stockcategory.stockCat_id'=>$category);
 	$joinTable = array(
 		array("stockcategory","stockitem","stockCat_id")
 	);
 	$data = $this->project_model->select_join('stockitem',$joinTable,$like=false,$whereArr);
-	foreach ($data as $value) {
-		
+	if($data){
+		foreach ($data as $key => $value) {
+			$result['data'][$key] = [
+				'categortId'=>$value->stockCat_id,
+				'stockName'=>$value->stock_name,
+				'stockId'=>$value->stock_id
+			];
+	
+			$result['sucess'] = true;
+		}
 	}
-	echo json_encode($data);
+	echo json_encode($result);
 }
 /*========= test =======*/
 	function loaditemqty(){
