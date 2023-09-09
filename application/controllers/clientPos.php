@@ -1358,6 +1358,7 @@ function fetchCategoryItems(){
 	}
 	echo json_encode($result);
 }
+
 /*========= test =======*/
 	function loaditemqty(){
 

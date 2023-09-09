@@ -621,7 +621,7 @@
                                     '<span class="text-danger"><strong>Php '+ data.cash +'</strong></span>'+
                                 '</li>'+
                                 '<li class="col-lg-6 col-md-6 col-xs-12" id="change"> '+
-                                    '<span class="text-muted"><strong>Gcash Fee: </strong></span>'+
+                                    '<span class="text-muted"><strong>Processing Fee: </strong></span>'+
                                     '<span class="text-danger"><strong>Php '+ data.gcashfee +'</strong></span>'+
                                 '</li>'+
                                 '<li class="col-lg-6 col-md-6 col-xs-12" id="change"> '+
