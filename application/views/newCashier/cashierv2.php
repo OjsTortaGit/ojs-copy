@@ -2,6 +2,9 @@
     #itemsCont,#chartCont{
         height: 93vh;
     }
+    #itemCont{
+        height: 70vh;
+    }
     #buttonCont{
         height: 5vh;
     }
@@ -26,6 +29,9 @@
     }
     #categoryLink{
       border: solid 1px;
+    }
+    .card{
+        min-height: 10em;
     }
 </style>
 <main class="container-fluid">
@@ -98,42 +104,13 @@
             <template id="itemTemplate">
                 <div class="col-lg-2" role="button" data-id="{{prodID}}">
                     <div class="card p-3">
-                        <i class="fa fa-cubes" aria-hidden="true"></i> {{prodName}}
+                        <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
+                        <span class="fs-5">{{prodName}}</span>
                     </div>
                 </div>
             </template>
-            <div class="row p-3" id="itemCont">
-                <div class="col-lg-2 itemsHeight" role="button" data-id="">
-                    <div class="card p-3">
-                        <i class="fa fa-cubes" aria-hidden="true"></i> Torta S
-                    </div>
-                </div>
-                <div class="col-lg-2" role="button" data-id="">
-                    <div class="card p-3">
-                        <i class="fa fa-cubes" aria-hidden="true"></i> Torta S
-                    </div>
-                </div>
-                <div class="col-lg-2" role="button" data-id="">
-                    <div class="card p-3">
-                        <i class="fa fa-cubes" aria-hidden="true"></i> Torta S
-                    </div>
-                </div>
-                <div class="col-lg-2" role="button" data-id="">
-                    <div class="card p-3">
-                        <i class="fa fa-cubes" aria-hidden="true"></i> Torta S
-                    </div>
-                </div>
-                <div class="col-lg-2" role="button" data-id="">
-                    <div class="card p-3">
-                        <i class="fa fa-cubes" aria-hidden="true"></i> Torta S
-                    </div>
-                </div>
-                <div class="col-lg-2" role="button" data-id="">
-                    <div class="card p-3">
-                        <i class="fa fa-cubes" aria-hidden="true"></i> Torta S
-                    </div>
-                </div>
-            </div>
+            <!-- item container -->
+            <div class="row gy-3 gx-3 p-3 overflow-hidden mt-3" id="itemCont"></div>
         </div>
         <div class="container-fluid position-relative col-lg-4 col-md-4 pe-3 ps-3" id="chartCont">
             <div class="row">

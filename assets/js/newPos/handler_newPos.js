@@ -38,7 +38,6 @@ const printBillHandler = () => {};
 // select category
 const selectCategoryHandler = (element) => {
 	const id = element.getAttribute("data-id");
-	console.log(id);
 	const data = { id: id };
 	const url = baseurl + "clientPos/fetchCategoryItems";
 	asyncGetVendor(url, data, cb_displaySelectedItems, errCallback);

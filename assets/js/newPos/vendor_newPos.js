@@ -147,5 +147,11 @@ const cb_itemListVendor = (response) => {};
 
 function cb_displaySelectedItems(response) {
 	const { data } = response;
-	console.log(data);
+	const template = $("#itemTemplate");
+	const container = $("#itemCont");
+	container.empty();
+	data.forEach((d) => {
+		const newData = { prodID: d.stockId, prodName: d.stockName };
+		renderTemp(container, template, newData);
+	});
 }
