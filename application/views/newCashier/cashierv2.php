@@ -49,7 +49,7 @@
                             </a>
 
                             <template id="categoryTemplate">
-                                <li><a class="dropdown-item p-2 categoryItem" href="#" data-id='{{id}}' onclick="selectCategoryHandler(this)">{{name}}</a></li>
+                                <li><a class="dropdown-item p-3 categoryItem" href="#" data-id='{{id}}' onclick="selectCategoryHandler(this)">{{name}}</a></li>
                             </template>
                             <ul class="dropdown-menu" id="categoryContainer">
                             </ul>
@@ -67,10 +67,10 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page"> <i class="fa fa-calendar fa-fx"></i> <?php echo $this->session->userdata('setdate');?></a>
+                                    <a class="nav-link p-3 active" aria-current="page"> <i class="fa fa-calendar fa-fx"></i> <?php echo $this->session->userdata('setdate');?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id=""> <i class="fa fa-file-text" aria-hidden="true"></i> Receipt </a>
+                                    <a class="nav-link p-3" id=""> <i class="fa fa-file-text" aria-hidden="true"></i> Receipt </a>
                                 </li>
                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="#">Link</a>
@@ -89,10 +89,10 @@
                                     </ul>
                                 </li> -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="javascript:;" id="closing"> <i class="fa fa-power-off fa-fx"></i> Closing </a>
+                                    <a class="nav-link p-3" href="javascript:;" id="closing"> <i class="fa fa-power-off fa-fx"></i> Closing </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url("clientPos/logout");?>"> <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                                    <a class="nav-link p-3" href="<?php echo base_url("clientPos/logout");?>"> <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -112,6 +112,7 @@
             <!-- item container -->
             <div class="row gy-3 gx-3 p-3 overflow-hidden mt-3" id="itemCont"></div>
         </div>
+        <!-- Summary -->
         <div class="container-fluid position-relative col-lg-4 col-md-4 pe-3 ps-3" id="chartCont">
             <div class="row">
                 <nav class="navbar">
@@ -122,11 +123,7 @@
                                 <i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item p-2" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart</a></li>
-                                <li><a class="dropdown-item p-2 text-danger" href="#"><i class="fa fa-shopping-cart " aria-hidden="true"></i>Unpaid</a></li>
-                                <li><a class="dropdown-item p-2" href="#">Void</a></li>
-                                <li><a class="dropdown-item p-2" href="#">Close</a></li>
-                                <li><a class="dropdown-item p-2" href="#">New</a></li>
+                                <li><a class="dropdown-item p-2 text-center fw-bold" href="#">Close</a></li>
                             </ul>
                         </div>
                     </div>
@@ -134,22 +131,15 @@
             </div>
             <div class="row overflow-auto" id="cartCont">
                 <table id="cartPosItem" class="table">
+                    <template id="">
+                        <tr data-id="1" role="button">
+                            <td>Torta Small</td>
+                            <td class="text-end">P20.00</td>
+                        </tr>
+                    </template>
                     <tbody id="itemTbody">
                         <tr data-id="1" role="button">
-                            <td>Torta Small</td>
-                            <td class="text-end">P20.00</td>
-                        </tr>
-                        <tr role="button">
-                            <td>Torta Small</td>
-                            <td class="text-end">P20.00</td>
-                        </tr>
-                        <tr data-id="1" role="button">
-                            <td>Torta Small</td>
-                            <td class="text-end">P20.00</td>
-                        </tr>
-                        <tr role="button">
-                            <td>Torta Small</td>
-                            <td class="text-end">P20.00</td>
+                            <td class="col-2 text-center">No Selected Cart!</td>
                         </tr>
                     </tbody>
                 </table>
@@ -158,6 +148,10 @@
             <div class="row position-absolute bottom-0 w-100 justify-content-evenly">
                 <div class="row fs-6">
                     <div class="col-10">Subtotal</div>
+                    <div class="col-2 text-end">P0.00</div>
+                </div>
+                <div class="row fs-6">
+                    <div class="col-10">DISCOUNT</div>
                     <div class="col-2 text-end">P0.00</div>
                 </div>
                 <div class="row fs-6">
@@ -208,7 +202,7 @@
             <div class="row">
                 <div class="col p-3 text-bg-primary text-center border border-white" id="opencashcart" role="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cash Cart</div>
                 <div class="col p-3 text-bg-primary text-center border border-white" id="opencreditcart" role="button"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Credit Cart</div>
-                <div class="col p-3 text-bg-success text-center border border-white" id="newcashcart" role="button"><i class="fa fa-plus" aria-hidden="true"></i> New Cash</div>
+                <div class="col p-3 text-bg-success text-center border border-white" id="newcashcart" role="button"><i class="fa fa-plus" aria-hidden="true"></i> New Cart</div>
                 <div class="col p-3 text-bg-danger text-center border border-white" id="newcreditcart" role="button"><i class="fa fa-plus" aria-hidden="true"></i> New Credit</div>
             </div>
         </div>

@@ -8,6 +8,10 @@ const defaultHandler = () => {
 	const categoryUrl = "/clientPos/fetchCategoryList";
 	const allitemUrl = "/clientPos/fetchCategoryList";
 	asyncgetVendor(categoryUrl, cb_categoryListVedor, errCallback);
+
+	// load all items
+	// const url = baseurl + "clientPos/fetchCategoryItems";
+	// asyncGetVendor(url, data, cb_displaySelectedItems, errCallback);
 };
 
 // create new cart
@@ -21,6 +25,7 @@ const selectCartHandler = () => {};
 // close selected cart
 const closeCartHandler = () => {};
 // void cart or reset cart status to not_paid and reset ordered_status to not_paid
+// disable print receipt
 const voidCartHandler = () => {};
 
 // add item to cart
@@ -28,8 +33,18 @@ const addItem = () => {};
 // delete item to cart
 const deleteItem = () => {};
 
-// pay cart selected
-const payHandler = () => {};
+// pay cash
+const payCashHandler = () => {};
+
+// pay maya
+const payMayaHandler = () => {};
+
+// pay gcash
+const payGCashHandler = () => {};
+
+// show print receipt,
+const confirmCashPayment = () => {};
+
 // print receipt
 const printReceiptHandler = () => {};
 // print bill

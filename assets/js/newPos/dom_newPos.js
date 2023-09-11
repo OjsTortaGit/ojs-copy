@@ -53,7 +53,7 @@ const searchItemSelection = () => {};
 
 const showCartItem = () => {};
 
-function touchScroll(scrollableDiv) {
+const touchScroll = (scrollableDiv) => {
 	let isScrolling = false;
 	let startX, startY, scrollLeft, scrollTop;
 
@@ -88,4 +88,4 @@ function touchScroll(scrollableDiv) {
 		isScrolling = false;
 		scrollableDiv.style.cursor = "grab";
 	});
-}
+};

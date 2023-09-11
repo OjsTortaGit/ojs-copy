@@ -11,7 +11,7 @@ class ClientPos extends CI_Controller {
 	}
 
 	public function index(){
-		$where = array('emp_id'=>$this->session->userdata('current_id'));
+		/* $where = array('emp_id'=>$this->session->userdata('current_id'));
 		$data['employee'] = $this->project_model->single_select('employee',$where);
 		echo $this->session->userdata('discount_type');
 		$data['title'] = "Cashier";
@@ -19,7 +19,8 @@ class ClientPos extends CI_Controller {
 		$this->load->view('header',$data);
 		$this->load->view('content/nav');
 		$this->load->view('content/pos_main');
-		$this->load->view('footer');
+		$this->load->view('footer'); */
+		$this->newPos();
 	}
 
 	public function newPos(){
@@ -1338,9 +1339,8 @@ function fetchCategoryList(){
 function fetchCategoryItems(){
 	// replace with input value from the frontend
 	$category = $this->input->get('id');
-	$newprodArr = [];
 	$result = array('success' => false, 'data' => [], 'error' => '');
-	$whereArr = array('stockcategory.stockCat_id'=>$category);
+	$whereArr = array('stockcategory.stockCat_id'=>$category,'stockitem.stockclass_id'=>4);
 	$joinTable = array(
 		array("stockcategory","stockitem","stockCat_id")
 	);
@@ -1359,9 +1359,26 @@ function fetchCategoryItems(){
 	echo json_encode($result);
 }
 
+function displayAllItem(){
+	$result = array('success' => false, 'data' => [], 'error' => '');
+	$data = $this->project_model->select_join('stockitem');
+	if($data){
+		foreach ($data as $key => $value) {
+			$result['data'][$key] = [
+				'categortId'=>$value->stockCat_id,
+				'stockName'=>$value->stock_name,
+				'stockId'=>$value->stock_id
+			];
+	
+			$result['sucess'] = true;
+		}
+	}
+	echo json_encode($result);
+}
+
 /*========= test =======*/
 	function loaditemqty(){
-
+	
 	}
 
 	function test(){
