@@ -1,11 +1,20 @@
-import {inputs,containerEl,templateEl} from './input_newPos';
+categoryHandler();
+// $(function () {
+// 	var startY, startScrollTop;
 
-const {category,search} = inputs;
+// 	$(".scrollable")
+// 		.on("touchstart", function (e) {
+// 			startY = e.originalEvent.touches[0].pageY;
+// 			startScrollTop = $(this).scrollTop();
+// 		})
+// 		.on("touchmove", function (e) {
+// 			var currentY = e.originalEvent.touches[0].pageY;
+// 			var distance = startY - currentY;
+// 			$(this).scrollTop(startScrollTop + distance);
+// 		});
+// });
+const itemCont = document.getElementById("itemCont");
+scrollDiv(itemCont);
 
-const {categoryList} = containerEl;
-
-const {categoryTemplate} = templateEl;
-
-console.log(categoryList, categoryTemplate);
-
-defaultHandler();
+const cartCont = document.getElementById("cartCont");
+scrollDiv(cartCont);
