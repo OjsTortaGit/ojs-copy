@@ -1,31 +1,33 @@
 export const inputs = {
-    category: $(''),
-    search: $('')
-}
+	category: $(""),
+	search: $(""),
+};
 
 export const accountMenu = {
-    logout: $(''),
-}
+	logout: $(""),
+};
 
 export const cartMenu = {
-    printBill: $(''),
-    printReceipt: $(''),
-    void: $(),
-    close: $(),
-    newCart: $()
-}
+	printBill: $(""),
+	printReceipt: $(""),
+	void: $(),
+	close: $(),
+	newCart: $(),
+};
 
 export const buttonEl = {
-    new: $(),
-    pay: $(),
-    close: $(),
-    search: $(),
-}
+	new: $(),
+	pay: $(),
+	close: $(),
+	search: $(),
+};
 
 export const containerEl = {
-    categoryList: $('#categoryContainer'),
-}
+	categoryList: $("#categoryContainer"),
+	selectedProdCont: $("#itemCont"),
+};
 
 export const templateEl = {
-    categoryTemplate: $('#categoryTemplate'),
-}
+	categoryTemplate: $("#categoryTemplate"),
+	selectedProdTemplate: $("#itemTemplate"),
+};
