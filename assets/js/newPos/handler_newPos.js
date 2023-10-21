@@ -1,7 +1,6 @@
 /*
     handlerJS collect the functions that relates to the eventlistener
 */
-*/
 
 // default handler loaded the functions for displaying initial data
 

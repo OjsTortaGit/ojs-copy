@@ -29,8 +29,7 @@ class ClientPos extends CI_Controller
 		$this->load->view('header', $data);
 		$this->load->view('content/nav');
 		$this->load->view('content/pos_main');
-		$this->load->view('footer'); */
-		$this->newPos();
+		$this->load->view('footer');
 	}
 
 	public function newPos()
@@ -1378,24 +1377,32 @@ class ClientPos extends CI_Controller
 		echo json_encode($result);
 	}
 
-function fetchCategoryItems(){
-	// replace with input value from the frontend
-	$category = 7;
-	$newprodArr = [];
+	function fetchCategoryItems()
+	{
+		$result = ['success' => '', 'data' => [], 'error' => ''];
+		// replace with input value from the frontend
+		$category = $this->input->post('category');
+		$newprodArr = [];
 
-	$whereArr = array('stockcategory.stockCat_id'=>$category);
-	$joinTable = array(
-		array("stockcategory","stockitem","stockCat_id")
-	);
-	$data = $this->project_model->select_join('stockitem',$joinTable,$like=false,$whereArr);
-	foreach ($data as $value) {
-		
+		$whereArr = array('stockcategory.stockCat_id' => $category);
+		$joinTable = array(
+			array("stockcategory", "stockitem", "stockCat_id")
+		);
+		$items = $this->project_model->select_join('stockitem', $joinTable, $like = false, $whereArr);
+		if ($items != false) {
+			$result['success'] = true;
+			$result['data'] = $items;
+		} else {
+			$result['success'] = false;
+			$result['error'] = 'No Data Found';
+		}
+		header('Content-Type: application/json');
+		echo json_encode($result);
 	}
-	echo json_encode($data);
-}
 
-/*========= test =======*/
-	function loaditemqty(){
+	/*========= test =======*/
+	function loaditemqty()
+	{
 
 	}
 
